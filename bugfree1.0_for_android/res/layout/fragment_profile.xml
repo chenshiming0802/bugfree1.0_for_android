@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+    style="@style/theme_page_layout">
+    <include layout="@layout/include_header" />
+    <LinearLayout style="@style/theme_page_blank_blockM"></LinearLayout>
+    <RelativeLayout style="@style/theme_myprofile_line"
+        android:layout_height="96dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/touxiagn" />
+
+        <TextView style="@style/theme_myprofile_line_label"
+            android:id="@+id/realUserName"
+            android:text="陈市明"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="115dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="25dp"
+             />
+        <TextView style="@style/theme_myprofile_line_value"
+            android:id="@+id/userName"
+            android:text="帐号:chenshiming"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="115dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="50dp"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout style="@style/theme_page_blank_blockM"></LinearLayout>
+    <RelativeLayout style="@style/theme_myprofile_line">
+        <TextView style="@style/theme_myprofile_line_label"
+            android:text="邮箱地址"
+            />
+        <TextView style="@style/theme_myprofile_line_value"
+            android:id="@+id/email"
+            android:text="xxxxxxxxxx@baosight.com"
+            />
+    </RelativeLayout>
+    <LinearLayout style="@style/theme_page_blank_line"></LinearLayout>
+    <RelativeLayout style="@style/theme_myprofile_line">
+        <TextView style="@style/theme_myprofile_line_label"
+            android:text="手机号码"
+            />
+        <TextView style="@style/theme_myprofile_line_value"
+            android:id="@+id/mobile"
+            android:text="13764988912"
+            />
+    </RelativeLayout>
+
+    <LinearLayout style="@style/theme_page_blank_blockM"></LinearLayout>
+    <RelativeLayout style="@style/theme_myprofile_line"
+        android:id="@+id/cacheLayout">
+        <TextView style="@style/theme_myprofile_line_label"
+            android:text="数据缓存"
+            />
+        <TextView style="@style/theme_myprofile_line_value"
+            android:id="@+id/cacheSize"
+            android:text="清除"
+            />
+        <TextView style="@style/theme_myprofile_line_arrow"
+            android:id="@+id/arrow"
+            android:text="&#xf105;"
+            />
+    </RelativeLayout>
+    <LinearLayout style="@style/theme_page_blank_line"></LinearLayout>
+    <RelativeLayout style="@style/theme_myprofile_line"
+        android:id="@+id/commonReplyLayout">
+        <TextView style="@style/theme_myprofile_line_label"
+            android:text="常用回复意见"
+            />
+        <TextView style="@style/theme_myprofile_line_value"
+            android:text="设置"
+            />
+        <TextView style="@style/theme_myprofile_line_arrow"
+            android:id="@+id/arrow2"
+            android:text="&#xf105;"
+            />
+    </RelativeLayout>
+</LinearLayout>

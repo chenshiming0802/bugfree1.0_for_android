@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/theme_page_layout" >
+
+    <include layout="@layout/include_header"></include>
+    <LinearLayout style="@style/theme_body_layout"
+        android:layout_weight="1"
+        android:layout_gravity="top">
+        <LinearLayout style="@style/theme_body_lastline">
+            <TextView style="@style/theme_body_line_label"
+                android:text="回复内容"/>
+            <Spinner style="@style/theme_body_line_value"
+                android:id="@+id/type"></Spinner>
+        </LinearLayout>
+        <LinearLayout style="@style/theme_body_lastline"
+            android:gravity="top">
+            <TextView style="@style/theme_body_line_label"
+                android:text="回复内容" />
+            <EditText style="@style/theme_body_line_value"
+                android:id="@+id/content"
+                android:text=""
+                android:layout_height="168dp"
+                android:inputType="textMultiLine" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout style="@style/theme_bzone_layout"
+        android:id="@+id/bottomFl">
+        <!-- bottom的按钮 -->
+        <LinearLayout style="@style/theme_bzone_item_layout"
+            android:id="@+id/buttonBlock"
+            android:showDividers="beginning"
+            android:divider="?android:attr/listDivider"
+            android:visibility="visible" >
+            <LinearLayout style="@style/theme_bzone_item_buttonline_layout" >
+                <Button style="@style/theme_bzone_item_buttonline_button"
+                    android:id="@+id/addCommonReplyBt "
+                    android:text="新增回复" />
+                <Button style="@style/theme_bzone_item_buttonline_button"
+                    android:id="@+id/editCommonReplyBt "
+                    android:text="修改回复" />
+                <Button style="@style/theme_bzone_item_buttonline_button"
+                    android:id="@+id/deleteCommonReplyBt"
+                    android:text="删除回复" />
+                <Button style="@style/theme_bzone_item_buttonline_button"
+                    android:id="@+id/cancelCommonReplyBt"
+                    android:text="  取  消  " />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

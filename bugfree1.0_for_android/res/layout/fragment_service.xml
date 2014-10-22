@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/theme_page_layout" >
+    <include layout="@layout/include_header" />
+    <!-- 正文内容 -->
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <LinearLayout style="@style/theme_body_layout">
+            <TextView style="@style/theme_body_title1"
+                android:id="@+id/butTitle"
+                android:text="标题:会员和频道申请报表无法下载" />
+            <LinearLayout style="@style/theme_body_line">
+                <TextView style="@style/theme_body_line_value"
+                android:id="@+id/bugProject"
+                android:text="项目模块：BSP_会员服务平台"
+                />
+            </LinearLayout>
+            <LinearLayout style="@style/theme_body_line">
+                <TextView style="@style/theme_body_line_value"
+                    android:id="@+id/bugType"
+                    android:text="事件类型：BUG修改"
+                    />
+            </LinearLayout>
+            <LinearLayout style="@style/theme_body_line">
+                <TextView style="@style/theme_body_line_value"
+                    android:id="@+id/finishTime"
+                    android:text="期望时间：20140910 19:00:00"
+                    />
+            </LinearLayout>
+            <LinearLayout style="@style/theme_body_line">
+                <TextView style="@style/theme_body_line_value"
+                    android:id="@+id/bugImport"
+                    android:text="严重程度：重要不紧急"
+                    />
+            </LinearLayout>
+             <LinearLayout style="@style/theme_body_line">
+                <TextView style="@style/theme_body_line_value"
+                    android:id="@+id/bugAssignTo"
+                    android:text="指派人员：陈市明&lt;chenshiming&gt;"
+                    />
+             </LinearLayout>
+            <LinearLayout style="@style/theme_body_lastline">
+                <TextView style="@style/theme_body_line_value"
+                    android:id="@+id/bugCreateUser"
+                    android:text="由谁创建：蔡蕾瑾&lt;caileijin&gt;"
+                    />
+            </LinearLayout>
+
+            <View style="@style/theme_page_blank_blockM"/>
+
+            <LinearLayout style="@style/theme_listview_header">
+                <TextView style="@style/theme_listview_header_title"
+                    android:text="回复信息"
+                    android:layout_width="wrap_content" />
+            </LinearLayout>
+
+            <com.sprcore.android.core.tools.ListViewForScrollView style="@style/theme_listview"
+                android:id="@+id/commentLv" />
+            <LinearLayout style="@style/theme_body_line" android:layout_height="60dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout style="@style/theme_bzone_layout"
+        android:id="@+id/bottomFl">
+        <!-- bottom的按钮 -->
+        <LinearLayout style="@style/theme_bzone_item_layout"
+            android:id="@+id/buttonBlock"
+            android:showDividers="beginning"
+            android:divider="?android:attr/listDivider"
+            android:visibility="visible" >
+            <LinearLayout style="@style/theme_bzone_item_buttonline_layout" >
+                <Button style="@style/theme_bzone_item_buttonline_button"
+                    android:id="@+id/editBt"
+                    android:text="编辑事件" />
+                <Button style="@style/theme_bzone_item_buttonline_button"
+                    android:id="@+id/fixBt"
+                    android:text="解决事件" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 编辑事件区 -->
+        <LinearLayout style="@style/theme_bzone_item_layout"
+            android:id="@+id/editBlock"
+            android:visibility="gone">
+            <LinearLayout style="@style/theme_bzone_item_headerline_layout">
+                <TextView style="@style/theme_bzone_item_headerline_title"
+                    android:text="更新事件"
+                    android:layout_width="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/theme_bzone_item_line_layout">
+                <TextView style="@style/theme_bzone_item_line_label"
+                    android:text="指派人员：" />
+
+                <TextView style="@style/theme_bzone_item_line_value"
+                    android:id="@+id/replyAssignUserEt"
+                    android:hint="请选择指派人" >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout style="@style/theme_bzone_item_line_layout" >
+                <TextView style="@style/theme_bzone_item_line_label"
+                    android:text="常见意见：" />
+                <Spinner style="@style/theme_bzone_item_line_value"
+                    android:id="@+id/editBlockCommonReplyEt"
+                    />
+            </LinearLayout>
+            <LinearLayout style="@style/theme_bzone_item_line_layout" >
+                <TextView style="@style/theme_bzone_item_line_label"
+                    android:text="处理意见：" />
+                <EditText style="@style/theme_bzone_item_line_value"
+                    android:id="@+id/replyContentEt"
+                     >
+                </EditText>
+            </LinearLayout>
+            <LinearLayout style="@style/theme_bzone_item_buttonline_layout" >
+                <Button style="@style/theme_bzone_item_buttonline_button"
+                    android:id="@+id/editBlockSubmitBt"
+                    android:text="更新事件" />
+
+                <Button style="@style/theme_bzone_item_buttonline_button"
+                    android:id="@+id/editBlockCancelBt"
+                    android:text="  取  消  " />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 解决它区 -->
+        <LinearLayout style="@style/theme_bzone_item_layout"
+            android:id="@+id/fixBlock"
+            android:visibility="visible" >
+            <LinearLayout style="@style/theme_bzone_item_headerline_layout">
+                <TextView style="@style/theme_bzone_item_headerline_title"
+                    android:text="解决事件"
+                    android:layout_width="wrap_content" />
+            </LinearLayout>
+            <LinearLayout style="@style/theme_bzone_item_line_layout" >
+                <TextView style="@style/theme_bzone_item_line_label"
+                    android:id="@+id/textView3"
+                    android:text="解决方案：" />
+                <Spinner style="@style/theme_bzone_item_line_value"
+                    android:id="@+id/fixBlockFixTypeSpinner"
+                     />
+            </LinearLayout>
+            <LinearLayout style="@style/theme_bzone_item_line_layout" >
+                <TextView style="@style/theme_bzone_item_line_label"
+                    android:text="常见意见：" />
+                <Spinner style="@style/theme_bzone_item_line_value"
+                    android:id="@+id/fixBlockCommonReplyEt"
+                    />
+            </LinearLayout>
+            <LinearLayout style="@style/theme_bzone_item_line_layout">
+                <TextView style="@style/theme_bzone_item_line_label"
+                    android:id="@+id/textView4"
+                    android:text="处理意见：" />
+
+                <EditText style="@style/theme_bzone_item_line_value"
+                    android:id="@+id/fixBlockFixContentEt"
+                     />
+            </LinearLayout>
+            <LinearLayout style="@style/theme_bzone_item_buttonline_layout">
+                <Button style="@style/theme_bzone_item_buttonline_button"
+                    android:id="@+id/fixBlockSubmitBt"
+                    android:text="解决它" />
+                <Button style="@style/theme_bzone_item_buttonline_button"
+                    android:id="@+id/fixBlockCancelBt"
+                    android:text="  取  消  "  />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

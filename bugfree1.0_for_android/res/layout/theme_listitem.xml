@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/theme_listItem_layout">
+
+    <TextView style="@style/theme_listItem_title1"
+        android:id="@+id/title1"
+        android:text="一级标题"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+    <TextView style="@style/theme_listItem_title2_pic"
+        android:id="@+id/title2Pic"
+        android:text="&#xf0da;"
+        android:layout_below="@+id/title1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+    <TextView style="@style/theme_listItem_title2"
+        android:id="@+id/title2"
+        android:text="二级标题"
+        android:layout_below="@+id/title1"
+        android:layout_toRightOf="@+id/bugInfo1Pic"
+        />
+    <TextView style="@style/theme_listItem_r_label"
+        android:id="@+id/rightInfo"
+        android:text="右边信息"
+        android:layout_alignTop="@+id/title1"
+        />
+
+    <TextView style="@style/theme_listItem_arrow"
+        android:id="@+id/arrow"
+        android:text="&#xf105;"
+        />
+</RelativeLayout>

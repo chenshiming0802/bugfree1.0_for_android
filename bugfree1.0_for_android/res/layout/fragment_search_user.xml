@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/include_header" />
+
+    <LinearLayout style="@style/theme_upsearch_line_layout" >
+        <EditText style="@style/theme_upsearch_line_search_textview"
+            android:id="@+id/searchEt"
+            android:hint="请输入用户名或名称" />
+        <Button style="@style/theme_upsearch_line_search_button"
+            android:id="@+id/searchBt"
+            android:text="搜索"
+             />
+    </LinearLayout>
+
+
+
+    
+    <com.handmark.pulltorefresh.library.PullToRefreshListView  style="@style/theme_listview"
+        android:id="@+id/listView1" />
+
+    <FrameLayout style="@style/theme_bzone_layout"
+        android:id="@+id/bottomFl">
+        <!-- bottom的按钮 -->
+        <LinearLayout style="@style/theme_bzone_item_layout"
+            android:id="@+id/buttonBlock"
+            android:visibility="visible" >
+            <LinearLayout style="@style/theme_bzone_item_buttonline_layout" >
+                <Button style="@style/theme_bzone_item_buttonline_button"
+                    android:id="@+id/clearHistoryBt"
+                    android:text="清空历史" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/theme_listItem_layout">
+
+    <TextView style="@style/theme_listItem_title1"
+        android:id="@+id/bugTitle"
+        android:text="0056141 会员和频道申请报表无法下载"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+    />
+
+    <TextView style="@style/theme_listItem_title2_pic"
+        android:id="@+id/bugInfo1Pic"
+        android:text="&#xf02c;"
+        android:layout_below="@+id/bugTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+    <TextView style="@style/theme_listItem_title2"
+        android:id="@+id/bugInfo1"
+        android:text="所属 BSP平台/会员管理模块 模块"
+        android:layout_below="@+id/bugTitle"
+    android:layout_toRightOf="@+id/bugInfo1Pic"
+        />
+
+    <TextView style="@style/theme_listItem_title2_pic"
+        android:id="@+id/bugInfo2Pic"
+        android:text="&#xf044;"
+        android:layout_below="@+id/bugInfo1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+    <TextView style="@style/theme_listItem_title2"
+        android:id="@+id/bugInfo2"
+        android:text="刘静 2014/09/10 18:00 创建"
+        android:layout_below="@+id/bugInfo1"
+        android:layout_toRightOf="@+id/bugInfo2Pic"
+        />
+
+    <TextView style="@style/theme_listItem_title2_pic"
+        android:id="@+id/bugInfo3Pic"
+        android:text="&#xf071;"
+        android:layout_below="@+id/bugInfo2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+    <TextView style="@style/theme_listItem_title2_lastline"
+        android:id="@+id/bugInfo3"
+        android:text="期望 2014/09/10 17:00 完成"
+        android:layout_below="@+id/bugInfo2"
+        android:layout_toRightOf="@+id/bugInfo2Pic"
+        />
+
+    <TextView style="@style/theme_listItem_r_label"
+        android:id="@+id/bugStatus"
+        android:text="Action\n陈市明\n1天前"
+        android:layout_alignTop="@+id/bugInfo1"
+        />
+
+    <TextView style="@style/theme_listItem_arrow"
+        android:id="@+id/arrow"
+        android:text="&#xf105;"
+        />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Theme的Style，各模块之间以两个回车分隔-->
+<resources>
+    <!--项目Theme-->
+    <style name="AppBaseTheme" parent="android:Theme.Light.NoTitleBar">
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+    </style>
+
+
+    <!--页面：所有的页面必须使用-->
+    <style name="theme_page_layout">
+        <item name="android:background">@color/theme_page_background</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <!--页面中的隔断栏目-->
+    <style name="theme_page_blank_blockM">
+        <item name="android:background">@color/theme_page_background</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">16dp</item>
+    </style>
+    <!--页面中的隔断行-->
+    <style name="theme_page_blank_line">
+        <item name="android:background">@color/theme_page_background</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0.1dp</item>
+    </style>
+
+
+    <!--Page 的 header layout-->
+    <style name="theme_header_layout">
+        <item name="android:background">@color/theme_page_header</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+    <!--listView的header文字-->
+    <style name="theme_header_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/theme_page_header_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="theme_header_pic">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:textSize">28dp</item>
+        <item name="android:textColor">@color/theme_page_header_title</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <!--画线中显示正文的layout ，通常用于详情画面，如service画面-->
+    <style name="theme_body_layout">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/theme_page_foreground</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_gravity">top</item>
+    </style>
+    <style name="theme_body_title1"><!--详情画面body标题，如servcie详情画面的标题-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/theme_font_title1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+    <style name="theme_body_line"><!--详情画面body的列明细，如service详情胡歌面的各个属性字段-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="theme_body_line_label"><!--详情画面body的列明细，如service详情胡歌面的各个属性字段-->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/theme_font_title2</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+    <style name="theme_body_line_value"><!--详情画面body的列明细，如service详情胡歌面的各个属性字段-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/theme_font_title2</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <!--<item name="android:layout_marginBottom">0dp</item>-->
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+    <style name="theme_body_lastline" parent="theme_body_line">
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+
+    <!--MyProfile的列表-->
+    <style name="theme_myprofile_line"><!-- 必须是RelativeLayout-->
+        <item name="android:background">@color/theme_page_foreground</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+    <style name="theme_myprofile_line_label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/theme_font_label</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+    <style name="theme_myprofile_line_value">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/theme_font_body</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">28dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+    <style name="theme_myprofile_line_arrow"><!--右边箭头-->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">@color/theme_font_title1</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+
+    <!--search的line，见servcie search顶部搜索框layout-->
+    <style name="theme_upsearch_line_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">#c0c0c0</item>
+    </style>
+    <style name="theme_upsearch_line_search_textview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="theme_upsearch_line_search_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--Bottm区域的，form界面等，见service详情画面的更新按钮和解决按钮-->
+    <style name="theme_bzone_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="theme_bzone_item_layout"><!--item的layout-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/theme_bzone_backgroundcolor</item>
+    </style>
+    <style name="theme_bzone_item_headerline_layout"><!--header line layout-->
+        <item name="android:background">@color/theme_page_header</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="theme_bzone_item_headerline_title"><!--header中的textview-->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/theme_page_header_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+    <style name="theme_bzone_item_line_layout"><!--普通line layout-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="theme_bzone_item_line_label"><!--普通line 中的label-->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/theme_font_label</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+    <style name="theme_bzone_item_line_value"><!--普通line 中的value-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/theme_font_body</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+    <style name="theme_bzone_item_buttonline_layout" parent="theme_bzone_item_line_layout"><!--button line layout-->
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="theme_bzone_item_buttonline_button"><!--button line中的button-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@color/theme_bzone_backgroundcolor</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+
+    <!--导航activity_main-->
+    <style name="theme_nav_layout"><!--导航layout，如首页的底部的四个框，代替radioGroup-->
+        <item name="android:background">@color/theme_page_footer</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="theme_nav_item_layout"><!--导航Item的layout-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="theme_nav_item_line"><!--导航Item的的隔离线条-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0.1dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:background">@color/theme_page_background</item>
+    </style>
+    <style name="them_nav_item_pic"><!--导航Item的图标-->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">24dp</item>
+    </style>
+    <style name="theme_nav_item_label"><!--导航Item的文字-->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+
+    <!--listView m-->
+    <style name="theme_listview">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:cacheColorHint">#00000000</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:fastScrollEnabled">false</item>
+        <item name="android:footerDividersEnabled">false</item>
+        <item name="android:headerDividersEnabled">false</item>
+        <item name="android:smoothScrollbar">true</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <!--listView的header-->
+    <style name="theme_listview_header">
+        <item name="android:background">@color/theme_page_header</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+    <!--listView的header文字-->
+    <style name="theme_listview_header_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/theme_page_header_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+    <!--listview的item明细-->
+    <style name="theme_listItem_layout">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/theme_page_foreground</item>
+    </style>
+    <style name="theme_listItem_title1"><!--一级标题-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/theme_font_title1</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+    <style name="theme_listItem_title1_small" parent="theme_listItem_title1"><!--一级标题-->
+        <item name="android:textSize">13dp</item>
+    </style>
+    <style name="theme_listItem_title2_pic"><!--二级标题图片-->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/theme_font_title2</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+    <style name="theme_listItem_title2"><!--二级标题-->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/theme_font_title2</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+    <style name="theme_listItem_title2_lastline" parent="theme_listItem_title2">
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+    <style name="theme_listItem_r_label"><!--右边提示框-->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/theme_font_title1</item>
+        <item name="android:layout_marginRight">25dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:background">@drawable/theme_listitem_r_sharp</item>
+    </style>
+    <style name="theme_listItem_arrow"><!--右边箭头-->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">@color/theme_font_title1</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+
+    
+</resources>

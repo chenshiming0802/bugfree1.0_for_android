@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/theme_page_layout" >
+
+    <include layout="@layout/include_header" />
+
+    <ListView style="@style/theme_listview"
+        android:id="@+id/listView1"
+        />
+
+</LinearLayout>

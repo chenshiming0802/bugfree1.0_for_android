@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/headUi"
+    style="@style/theme_header_layout"
+     >
+        <TextView android:id="@id/headTitleTv"
+            style="@style/theme_header_title"
+            android:text="[TITLE]"
+             />
+
+        <TextView android:id="@+id/previewPicTv"
+             style="@style/theme_header_pic"
+             android:text="&#xf104;" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            >
+            <TextView style="@style/theme_header_pic"
+            android:id="@+id/pic2"
+            android:text=""/>
+            <TextView style="@style/theme_header_pic"
+                android:id="@+id/pic1"
+                android:text=""/>
+            <TextView style="@style/theme_header_pic"
+                android:id="@+id/addTv"
+                android:text="&#xf044;"/>
+            <TextView style="@style/theme_header_pic"
+                android:id="@+id/searchTv"
+                android:text="&#xf00e;"/>
+            <TextView style="@style/theme_header_pic"
+                android:id="@+id/refreshTv"
+                android:text="&#xf01e;"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+

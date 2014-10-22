@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/theme_page_layout" >
+
+    <LinearLayout 
+       android:id="@+id/content_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        >  
+    </LinearLayout> 
+
+    <LinearLayout style="@style/theme_nav_layout"
+        android:id="@+id/navLayout">
+        <LinearLayout style="@style/theme_nav_item_layout"
+            android:id="@+id/assignMeLayout">
+            <View style="@style/theme_nav_item_line"/>
+            <TextView style="@style/them_nav_item_pic"
+                android:text="&#xf0ae;"
+                />
+            <TextView style="@style/theme_nav_item_label"
+                android:text="我的任务"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/theme_nav_item_layout"
+            android:id="@+id/meCreateLayout">
+            <View style="@style/theme_nav_item_line"/>
+            <TextView style="@style/them_nav_item_pic"
+                android:text="&#xf02c;" />
+            <TextView style="@style/theme_nav_item_label"
+                android:text="我创建的"/>
+        </LinearLayout>
+        
+        <LinearLayout style="@style/theme_nav_item_layout"
+            android:id="@+id/myProfileLayout">
+            <View style="@style/theme_nav_item_line"/>
+            <TextView style="@style/them_nav_item_pic"
+                android:text="&#xf007;" />
+            <TextView style="@style/theme_nav_item_label"
+                android:text="我的信息"/>
+        </LinearLayout>
+        
+        <LinearLayout style="@style/theme_nav_item_layout"
+            android:id="@+id/logoutLayout">
+            <View style="@style/theme_nav_item_line"/>
+            <TextView style="@style/them_nav_item_pic"
+                android:text="&#xf08b;" />
+            <TextView style="@style/theme_nav_item_label"
+                android:text="注销"/>
+        </LinearLayout>        
+    </LinearLayout>
+
+</LinearLayout>
