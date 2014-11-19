@@ -137,7 +137,7 @@ public class UpdateManager
 			ParseXmlService service = new ParseXmlService();
 			try {
 				//String path = "http://testenv.bsp.bsteel.net/baosteel_cas2/MyBugFree/version.xml";
-				String path = "https://raw.githubusercontent.com/chenshiming0802/bugfree1.0_for_mobile/master/dist/bugfree1.0_for_android/version.xml";
+				String path = "https://raw.githubusercontent.com/chenshiming0802/dist/master/bugfree1.0_for_android/version.xml";
 				URL url = new URL(path);
 				conn = (HttpURLConnection) url.openConnection();
 				conn.setReadTimeout(5 * 1000);

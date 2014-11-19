@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/theme_page_layout" >
+    <include layout="@layout/include_header" />
+    <!-- 正文内容 -->
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <LinearLayout style="@style/theme_bzone_item_layout"
+            android:id="@+id/fixBlock"
+            android:visibility="visible" >
+            <LinearLayout style="@style/theme_bzone_item_line_layout">
+                <TextView style="@style/theme_bzone_item_line_label"
+                    android:text="事件标题：" />
+                <EditText style="@style/theme_bzone_item_line_value"
+                    android:id="@+id/bugTitleEt"
+                    />
+            </LinearLayout>
+            <LinearLayout style="@style/theme_bzone_item_line_layout">
+                <TextView style="@style/theme_bzone_item_line_label"
+                    android:text="所属项目：" />
+                <TextView style="@style/theme_bzone_item_line_value"
+                    android:id="@+id/bugInfo"
+                    android:hint="请选择项目" >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout style="@style/theme_bzone_item_line_layout">
+                <TextView style="@style/theme_bzone_item_line_label"
+                    android:text="指派人员：" />
+                <TextView style="@style/theme_bzone_item_line_value"
+                    android:id="@+id/assignUser"
+                    android:hint="请选择指派人" >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout style="@style/theme_bzone_item_line_layout"
+                android:layout_height="fill_parent"
+                >
+                <TextView style="@style/theme_bzone_item_line_label"
+                    android:id="@+id/bugContent"
+                    android:text="事件内容：" />
+                <EditText style="@style/theme_bzone_item_line_value"
+                    android:layout_height="200dp"
+                    android:inputType="textMultiLine"
+                    android:layout_weight="1"
+                    android:id="@+id/notesEt"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout style="@style/theme_bzone_layout"
+        android:id="@+id/bottomFl">
+    <!-- bottom的按钮 -->
+    <LinearLayout style="@style/theme_bzone_item_layout"
+        android:id="@+id/buttonBlock"
+        android:showDividers="beginning"
+        android:divider="?android:attr/listDivider"
+        android:visibility="visible" >
+        <LinearLayout style="@style/theme_bzone_item_buttonline_layout" >
+            <Button style="@style/theme_bzone_item_buttonline_button"
+                android:id="@+id/addBt"
+                android:text="新增事件" />
+        </LinearLayout>
+    </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>
