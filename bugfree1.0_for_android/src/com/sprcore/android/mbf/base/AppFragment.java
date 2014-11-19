@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.sprcore.android.core.tools.PhoneTools;
+import com.sprcore.android.mbf.ui.R;
 
 public abstract class AppFragment extends Fragment {
 	protected LayoutInflater mInflater;  
@@ -58,6 +59,13 @@ public abstract class AppFragment extends Fragment {
         }
 		onCreate(savedInstanceState,intentExtras);
 	}	
+	/**
+	 * useage:
+			super.onCreateView(inflater, container, savedInstanceState);<BR>
+			View rootView = inflater.inflate(R.layout.fragment_common_reply,
+					container, false);<BR>
+			return rootView;<BR>
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			 ViewGroup container,

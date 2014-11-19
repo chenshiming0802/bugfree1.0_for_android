@@ -41,9 +41,9 @@ public class AppHeaderModel {
 		pic1.setTypeface(AppActivity.TYPE_FACE);
 		pic1.setVisibility(View.GONE);
 		
-		pic1 = (TextView)view.findViewById(R.id.pic2);
-		pic1.setTypeface(AppActivity.TYPE_FACE);
-		pic1.setVisibility(View.GONE);
+		pic2 = (TextView)view.findViewById(R.id.pic2);
+		pic2.setTypeface(AppActivity.TYPE_FACE);
+		pic2.setVisibility(View.GONE);
  
 	}
  	
@@ -75,14 +75,16 @@ public class AppHeaderModel {
 	
 	
 	public void setPic1(String string,View.OnClickListener listener){
-		refreshTv.setText(string);
-		refreshTv.setVisibility(View.VISIBLE);
-		refreshTv.setOnClickListener(listener);
+		pic1.setText(string);
+		pic1.setVisibility(View.VISIBLE);
+		pic1.setTypeface(AppActivity.TYPE_FACE);
+		pic1.setOnClickListener(listener);
 	}
 	
 	public void setPic2(String string,View.OnClickListener listener){
-		refreshTv.setText(string);
-		refreshTv.setVisibility(View.VISIBLE);
-		refreshTv.setOnClickListener(listener);
+		pic2.setText(string);
+		pic2.setVisibility(View.VISIBLE);
+		pic2.setTypeface(AppActivity.TYPE_FACE);
+		pic2.setOnClickListener(listener);
 	}	
 }

@@ -1,10 +1,6 @@
 package com.sprcore.android.mbf.ui;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
- 
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -99,8 +95,8 @@ public class TestMainActivity extends AppActivity {
 				@Override
 				public void onClick(View arg0) {	
 					CharSequence[] items = {
-							"插入图片",
-							"相册选择"
+							"相册选择",
+							"拍照上传"
 					};
 					AlertDialog imageDialog = new AlertDialog.Builder(getBaseActivity()).setTitle("图片选择").setIcon(android.R.drawable.btn_star).setItems(items,
 							new DialogInterface.OnClickListener(){
@@ -114,39 +110,7 @@ public class TestMainActivity extends AppActivity {
 						                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment
 						                    .getExternalStorageDirectory(),"temp.jpg")));
 						                startActivityForResult(intent, ImageUtils.REQUEST_CODE_GETIMAGE_BYCAMERA);
-						            }									
-//									//手机选图
-//									if( item == 0 )
-//									{
-//										Intent intent = new Intent(Intent.ACTION_GET_CONTENT); 
-//										intent.addCategory(Intent.CATEGORY_OPENABLE); 
-//										intent.setType("image/*"); 
-//										startActivityForResult(Intent.createChooser(intent, "拍摄照片"),ImageUtils.REQUEST_CODE_GETIMAGE_BYSDCARD); 
-//									}
-//									//拍照
-//									else if( item == 1 )
-//									{	
-//										String savePath = "";
-//										//判断是否挂载了SD卡
-//										String storageState = Environment.getExternalStorageState();		
-//										if(storageState.equals(Environment.MEDIA_MOUNTED)){
-//											savePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/mbf/Camera/";//存放照片的文件夹
-//											File savedir = new File(savePath);
-//											if (!savedir.exists()) {
-//												savedir.mkdirs();
-//											}
-//										}
-//										String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-//										String fileName = "mbf_" + timeStamp + ".jpg";//照片命名
-//										File out = new File(savePath, fileName);
-//										Uri uri = Uri.fromFile(out);
-//										
-//										picFilePath = savePath + fileName;//该照片的绝对路径
-//										
-//										Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//										intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-//										startActivityForResult(intent, ImageUtils.REQUEST_CODE_GETIMAGE_BYCAMERA);
-//									}   
+						            }	
 								}}).create();
 						
 						 imageDialog.show();
@@ -185,12 +149,24 @@ public class TestMainActivity extends AppActivity {
 
 			@Override
 			protected AppSrModel doInBackground() {
-				//String imgName = FileUtils.getFileName(picFilePath);
-				//Bitmap bitmap = ImageUtils.loadImgThumbnail(getBaseActivity(), imgName, MediaStore.Images.Thumbnails.MICRO_KIND);
-				UploadServiceAttachmentSpModel spModel = new UploadServiceAttachmentSpModel();
-				spModel.setBugId("0000004");
-				spModel.setBugFileName(new File(picFilePath));
-				return new UploadFileHelper().uploadServiceAttachment(spModel);
+				String imgName = FileUtils.getFileName(picFilePath);
+				Bitmap bitmap = ImageUtils.loadImgThumbnail(getBaseActivity(), imgName, MediaStore.Images.Thumbnails.MICRO_KIND);
+				try {
+//					String tempFile = Environment.getExternalStorageDirectory().getAbsolutePath()+File.separator+"temp1.jpg";
+//					ImageUtils.saveImage(getBaseActivity(),tempFile,bitmap,80);
+//					picFilePath = tempFile;
+					UploadServiceAttachmentSpModel spModel = new UploadServiceAttachmentSpModel();
+					spModel.setBugId("0000004");
+					spModel.setBugFileName(new File(picFilePath));
+					return new UploadFileHelper().uploadServiceAttachment(spModel);	
+				} catch (Exception e) {
+					e.printStackTrace();
+					AppSrModel srModel = new AppSrModel();
+					srModel.setResultFlag("1");
+					srModel.setResultMessage(e.getMessage());
+					return srModel;
+				}
+	
 			}
 
 			@Override

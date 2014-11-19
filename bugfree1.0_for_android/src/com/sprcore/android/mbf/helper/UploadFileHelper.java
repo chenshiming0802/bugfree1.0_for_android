@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.PostMethod;
@@ -12,8 +13,13 @@ import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 import org.apache.commons.httpclient.methods.multipart.Part;
 import org.apache.commons.httpclient.methods.multipart.StringPart;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.http.HttpHeaders;
 
+import android.util.Log;
+
+import com.sprcore.android.mbf.base.AppActivity;
 import com.sprcore.android.mbf.base.AppException;
+import com.sprcore.android.mbf.base.AppHelper;
 import com.sprcore.android.mbf.helper.model.UploadServiceAttachmentSpModel;
 import com.sprcore.android.mbf.helper.model.UploadServiceAttachmentSrModel;
 
@@ -26,7 +32,13 @@ public class UploadFileHelper {
 	public UploadServiceAttachmentSrModel uploadServiceAttachment(UploadServiceAttachmentSpModel spModel){
 		UploadServiceAttachmentSrModel srModel = null;
 		
-		String url = "http://192.168.1.106:8081/service_proxy/service_proxy_withfils2.jsp";
+		//String url = "http://192.168.1.104:8081/service_proxy/service_proxy_withfils2.jsp";
+		String url = AppHelper.BASE_URL+"service_proxy_withfils2.jsp";
+		if(AppHelper.DEBUG){
+			url = AppHelper.DEBUG_BASE_URL+"service_proxy_withfils2.jsp";
+		}
+		
+		
 		String service = "uploadBugFile2.php";
 		HashMap params = new HashMap();
 		params.put("bugId", spModel.getBugId());
@@ -69,7 +81,15 @@ public class UploadFileHelper {
 		String response = null;
 		HttpClient client = new HttpClient();
 		PostMethod method = new UTF8PostMethod(url);
-
+		
+//		Header[] headers = new Header[1];
+//		if(AppActivity.getUserSummary()!=null && AppActivity.getUserSummary().getUcore1()!=null){		
+//			headers[0] = new Header("ucore1",AppActivity.getUserSummary().getUcore1());
+//			Log.i("hp_ucore1",AppActivity.getUserSummary().getUcore1());
+//		}
+		method.setRequestHeader(new Header("ucore1",AppActivity.getUserSummary().getUcore1()));
+		
+		
 		Iterator it = params.keySet().iterator();
 		//NameValuePair[] pairs = new NameValuePair[params.size()];
 		Part[] pairs = null;
@@ -91,7 +111,7 @@ public class UploadFileHelper {
 		}
 		
 //		method.setRequestBody(pairs);
- 
+		
 		method.setRequestEntity(new MultipartRequestEntity(pairs,method.getParams()));	
 		try {
 			client.executeMethod(method);

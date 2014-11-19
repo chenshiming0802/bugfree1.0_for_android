@@ -28,7 +28,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -78,7 +78,15 @@
         </activity>
         <activity
             android:name=".TestMainActivity"
-            android:label="@string/title_activity_test_main" >
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".AddServiceActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SearchProjectActivity"
+            android:label="@string/app_name" >
         </activity>
     </application>
 

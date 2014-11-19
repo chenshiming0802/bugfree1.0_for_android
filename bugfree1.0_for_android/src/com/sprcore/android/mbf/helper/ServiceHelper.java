@@ -1,8 +1,8 @@
 package com.sprcore.android.mbf.helper;
 
 import com.sprcore.android.mbf.base.AppHelper;
-import com.sprcore.android.mbf.helper.model.DoCheckLoginSpModel;
-import com.sprcore.android.mbf.helper.model.DoCheckLoginSrModel;
+import com.sprcore.android.mbf.helper.model.AddServiceSpModel;
+import com.sprcore.android.mbf.helper.model.AddServiceSrModel;
 import com.sprcore.android.mbf.helper.model.EditSubmitBuginfoSpModel;
 import com.sprcore.android.mbf.helper.model.EditSubmitBuginfoSrModel;
 import com.sprcore.android.mbf.helper.model.GetBuginfoSpModel;
@@ -86,6 +86,17 @@ public class ServiceHelper extends AppHelper{
 	public ResolveBugSrModel resolveBug(ResolveBugSpModel spModel) {
 		ResolveBugSrModel srModel = (ResolveBugSrModel) httpPost(
 				"resolveBug2.php", spModel, ResolveBugSrModel.class,false);
+		return srModel;
+	}
+	
+	/**
+	 * 创建BUG
+	 * @param spModel
+	 * @return
+	 */
+	public AddServiceSrModel addService(AddServiceSpModel spModel){
+		AddServiceSrModel srModel = (AddServiceSrModel) httpPost(
+				"addBug2.php", spModel, AddServiceSrModel.class,false);
 		return srModel;
 	}
 }

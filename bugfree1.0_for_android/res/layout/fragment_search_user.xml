@@ -9,7 +9,7 @@
     <LinearLayout style="@style/theme_upsearch_line_layout" >
         <EditText style="@style/theme_upsearch_line_search_textview"
             android:id="@+id/searchEt"
-            android:hint="请输入用户名或名称" />
+            android:hint="请输入搜索关键字" />
         <Button style="@style/theme_upsearch_line_search_button"
             android:id="@+id/searchBt"
             android:text="搜索"

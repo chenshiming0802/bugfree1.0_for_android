@@ -32,7 +32,16 @@
             <TextView style="@style/theme_nav_item_label"
                 android:text="我创建的"/>
         </LinearLayout>
-        
+
+        <LinearLayout style="@style/theme_nav_item_layout"
+            android:id="@+id/addServiceLayout">
+            <View style="@style/theme_nav_item_line"/>
+            <TextView style="@style/them_nav_item_pic"
+                android:text="&#xf044;" />
+            <TextView style="@style/theme_nav_item_label"
+                android:text="创建事件"/>
+        </LinearLayout>
+
         <LinearLayout style="@style/theme_nav_item_layout"
             android:id="@+id/myProfileLayout">
             <View style="@style/theme_nav_item_line"/>

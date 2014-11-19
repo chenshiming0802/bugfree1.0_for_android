@@ -1,11 +1,18 @@
 package com.sprcore.android.mbf.ui;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +21,13 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.sprcore.android.core.tools.wordpress.FileUtils;
+import com.sprcore.android.core.tools.wordpress.ImageUtils;
 import com.sprcore.android.mbf.base.AppActivity;
 import com.sprcore.android.mbf.base.AppAsyncTask;
 import com.sprcore.android.mbf.base.AppBaseAdapter;
@@ -25,8 +36,10 @@ import com.sprcore.android.mbf.base.AppHeaderModel;
 import com.sprcore.android.mbf.base.AppKeyValueModel;
 import com.sprcore.android.mbf.base.AppListViewModel;
 import com.sprcore.android.mbf.base.AppSpinnerModel;
+import com.sprcore.android.mbf.base.AppSrModel;
 import com.sprcore.android.mbf.base.AppSwitchViewModel;
 import com.sprcore.android.mbf.helper.ServiceHelper;
+import com.sprcore.android.mbf.helper.UploadFileHelper;
 import com.sprcore.android.mbf.helper.model.EditSubmitBuginfoSpModel;
 import com.sprcore.android.mbf.helper.model.EditSubmitBuginfoSrModel;
 import com.sprcore.android.mbf.helper.model.GetBuginfoSpModel;
@@ -34,6 +47,7 @@ import com.sprcore.android.mbf.helper.model.GetBuginfoSrModel;
 import com.sprcore.android.mbf.helper.model.GetBuginfoSrModel.BugHistoryModel;
 import com.sprcore.android.mbf.helper.model.ResolveBugSpModel;
 import com.sprcore.android.mbf.helper.model.ResolveBugSrModel;
+import com.sprcore.android.mbf.helper.model.UploadServiceAttachmentSpModel;
 import com.sprcore.android.mbf.local.CommonReplyLocal;
 import com.sprcore.android.mbf.local.model.CommonReply;
 
@@ -62,10 +76,13 @@ public class ServiceActivity extends AppActivity {
 		private TextView bugImport;
 		private TextView bugAssignTo;
 		private TextView bugCreateUser;
+		
+		private ScrollView scrollView1;
 
 		
 		private AppListViewModel commentLv = new AppListViewModel();
 		private Button editBt;
+		private Button uploadBt;
 		private Button fixBt;
 		private Button editBlockCancelBt;
 		private Button fixBlockCancelBt;
@@ -95,7 +112,7 @@ public class ServiceActivity extends AppActivity {
 					container, false);
 			return rootView;
 		}
-
+	
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
 			super.onActivityCreated(savedInstanceState);
@@ -113,7 +130,16 @@ public class ServiceActivity extends AppActivity {
 					new LoadBuginfoTask().singleExecute(getCurrentFragment());
 				}
 			});
+//			headerModel.setPic1("&#xf030;",headerPicListener );
 
+//			scrollView1 = (ScrollView)findViewById(R.id.scrollView1);
+//			scrollView1.setOnClickListener(new View.OnClickListener() {				
+//				@Override
+//				public void onClick(View arg0) {
+//					switchViewModel.display(R.id.buttonBlock);
+//				}
+//			});
+			
 			butTitle = (TextView) findViewById(R.id.butTitle);
 			butTitle.setText("");
 			bugProject = (TextView) findViewById(R.id.bugProject);
@@ -141,6 +167,9 @@ public class ServiceActivity extends AppActivity {
 					switchViewModel.display(R.id.editBlock);
 				}
 			});
+			uploadBt = (Button) findViewById(R.id.uploadBt); 
+			uploadBt.setOnClickListener(headerPicListener);
+			
 
 			editBlockCancelBt = (Button) findViewById(R.id.editBlockCancelBt);
 			editBlockCancelBt.setOnClickListener(new View.OnClickListener() {
@@ -259,24 +288,41 @@ public class ServiceActivity extends AppActivity {
 			});
 			fixTypeSpinnerModel.display();
 			new LoadBuginfoTask().singleExecute(getCurrentFragment());
-
+			
+ 
 		}
 
 		@Override
 		public void onActivityResult(int requestCode, int resultCode,
 				Intent data) {
 			super.onActivityResult(requestCode, resultCode, data);
+			if(resultCode != RESULT_OK) return;
+			
 			if (requestCode == SearchUserActivity.PlaceholderFragment.REQUEST_CODE_SERVICEDETAIL) {
 				// 选择员工指派人
-				switch (resultCode) {
-				case Activity.RESULT_OK:
-					selectAssignUserName = data.getStringExtra("userName");
-					replyAssignUserEt.setText(data.getStringExtra("realName")
-							+ "<" + data.getStringExtra("userName") + ">");
-					showToast(selectAssignUserName + " selected");
-					break;
+				selectAssignUserName = data.getStringExtra("userName");
+				replyAssignUserEt.setText(data.getStringExtra("realName")
+						+ "<" + data.getStringExtra("userName") + ">");
+				showToast(selectAssignUserName + " selected");
+			}else if(requestCode == ImageUtils.REQUEST_CODE_GETIMAGE_BYSDCARD) {
+				//照片選擇
+				String thePath = ImageUtils
+						.getAbsolutePathFromNoStandardUri(data.getData());
+				// 如果是标准Uri
+				if (thePath == null || thePath.trim().length() == 0) {
+					this.picFilePath = ImageUtils.getAbsoluteImagePath(
+							getBaseActivity(), data.getData());
+				} else {
+					this.picFilePath = thePath;
 				}
+				new UploadPicTask().singleExecute(getCurrentFragment());		
+			}else if(requestCode == ImageUtils.REQUEST_CODE_GETIMAGE_BYCAMERA) {
+				//拍攝照片
+				this.picFilePath = Environment.getExternalStorageDirectory()
+						+ "/temp.jpg";
+				new UploadPicTask().singleExecute(getCurrentFragment());		
 			}
+				
 		}
 
 		/**
@@ -432,5 +478,106 @@ public class ServiceActivity extends AppActivity {
 
 		};
 
+		/**
+		 * 点击header上的拍照按钮
+		 */
+		private View.OnClickListener headerPicListener = new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {	
+				CharSequence[] items = {
+						"相册选择",
+						"拍照上传"
+				};
+				AlertDialog imageDialog = new AlertDialog.Builder(getBaseActivity()).setTitle("上传图片").setItems(items,
+						new DialogInterface.OnClickListener(){
+							public void onClick(DialogInterface dialog, int item){
+								if( item == 0 ){ //从相册获取图片
+					                Intent intent = new Intent(Intent.ACTION_PICK, null);
+					                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+					                startActivityForResult(intent, ImageUtils.REQUEST_CODE_GETIMAGE_BYSDCARD);
+					            }else if( item == 1 ){ //从拍照获取图片
+					                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+					                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment
+					                    .getExternalStorageDirectory(),"temp.jpg")));
+					                startActivityForResult(intent, ImageUtils.REQUEST_CODE_GETIMAGE_BYCAMERA);
+					            }	
+							}}).create();
+					
+					 imageDialog.show();
+			}
+		};	
+		private String picFilePath;
+//		@Override
+//		public void onActivityResult(int requestCode, int resultCode,
+//				Intent data) {
+//			super.onActivityResult(requestCode, resultCode, data);
+//			if(resultCode != RESULT_OK) return;
+//			
+//			if(requestCode == ImageUtils.REQUEST_CODE_GETIMAGE_BYSDCARD) {
+//				//照片選擇
+//				String thePath = ImageUtils
+//						.getAbsolutePathFromNoStandardUri(data.getData());
+//				// 如果是标准Uri
+//				if (thePath == null || thePath.trim().length() == 0) {
+//					this.picFilePath = ImageUtils.getAbsoluteImagePath(
+//							getBaseActivity(), data.getData());
+//				} else {
+//					this.picFilePath = thePath;
+//				}
+//			}else{
+//				//拍攝照片
+//				this.picFilePath = Environment.getExternalStorageDirectory()
+//						+ "/temp.jpg";
+//			}
+//			new UploadPicTask().singleExecute(getCurrentFragment());
+//		}
+		
+		
+		public class UploadPicTask extends AppAsyncTask<AppSrModel>{
+
+			@Override
+			protected AppSrModel doInBackground() {
+				String imgName = FileUtils.getFileName(picFilePath);
+				//Bitmap bitmap = ImageUtils.loadImgThumbnail(getBaseActivity(), imgName, MediaStore.Images.Thumbnails.MICRO_KIND);
+				try {
+					Bitmap bitmap = ImageUtils.getimage(picFilePath, 1200f, 800f);
+					ImageUtils.saveImage(AppActivity.getCurrentActivity(),picFilePath,bitmap);
+					
+//					String tempFile = Environment.getExternalStorageDirectory().getAbsolutePath()+File.separator+"temp1.jpg";
+//					ImageUtils.saveImage(getBaseActivity(),tempFile,bitmap,80);
+//					picFilePath = tempFile;
+					UploadServiceAttachmentSpModel spModel = new UploadServiceAttachmentSpModel();
+					spModel.setBugId(bugId); 
+					spModel.setBugFileName(new File(picFilePath));
+					return new UploadFileHelper().uploadServiceAttachment(spModel);	
+				} catch (Exception e) {
+					e.printStackTrace();
+					AppSrModel srModel = new AppSrModel();
+					srModel.setResultFlag("1");
+					srModel.setResultMessage(e.getMessage());
+					return srModel;
+				}
+	
+			}
+
+			@Override
+			public boolean onPreExecute2() {
+				if(picFilePath==null || picFilePath.trim().length()==0){
+					return false;
+				}else{
+					return true;
+				}
+			}
+
+			@Override
+			protected void onPostExecute(AppSrModel srModel) {
+				if(isSuccess(srModel)){
+					getBaseActivity().showToast("照片上传成功！");
+					new LoadBuginfoTask().singleExecute(getCurrentFragment());
+				}else{
+					getBaseActivity().showToast("附件上传失败，失败原因:"+srModel.getResultMessage());
+				}
+			}			
+		}	
 	}
 }

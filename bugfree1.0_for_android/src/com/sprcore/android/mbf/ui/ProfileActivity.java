@@ -133,7 +133,7 @@ public class ProfileActivity extends AppActivity {
 				AppSrModel srModel = new AppSrModel();
 				srModel.setResultFlag("0");
 				new HttpDataHistoryLocal().deleteAll();//删除历史浏览记录
-				new UserHistoryLocal().deleteUserHistory();//删除员工查询记录
+				new UserHistoryLocal().deleteAll();//删除员工查询记录
 				return srModel;
 			}
 

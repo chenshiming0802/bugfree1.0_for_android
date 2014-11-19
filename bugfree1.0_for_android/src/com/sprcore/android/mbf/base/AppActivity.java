@@ -43,7 +43,7 @@ public abstract class AppActivity extends Activity{
 	
 	//当前的登录用户信息
 	private static AppUserSummary userSummary;
-	static AppUserSummary getUserSummary() {
+	public static AppUserSummary getUserSummary() {
 		return userSummary;
 	}
 	public static void setUserSummary(AppUserSummary userSummary) {

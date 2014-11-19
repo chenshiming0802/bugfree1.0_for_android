@@ -52,10 +52,18 @@ public class MainActivity extends AppActivity {
 		}));
 		navModel.addNavItem(new AppNavItemModel(getBaseActivity(), R.id.meCreateLayout,new AppNavItemModel.OnClickListener() {
 			@Override
-			public void onClick(AppNavItemModel nav) {
+			public void onClick(AppNavItemModel nav) { 
 				setServiceListFragementView(null,"1");
 			}
-		}));	
+		}));
+		navModel.addNavItem(new AppNavItemModel(getBaseActivity(), R.id.addServiceLayout,new AppNavItemModel.OnClickListener() {
+			@Override
+			public void onClick(AppNavItemModel nav) {
+				Intent intent = new Intent();
+				intent.setClass(getApplicationContext(), AddServiceActivity.class);
+				startActivity(intent);					
+			}
+		}));			
 		navModel.addNavItem(new AppNavItemModel(getBaseActivity(), R.id.myProfileLayout,new AppNavItemModel.OnClickListener() {
 			@Override
 			public void onClick(AppNavItemModel nav) {

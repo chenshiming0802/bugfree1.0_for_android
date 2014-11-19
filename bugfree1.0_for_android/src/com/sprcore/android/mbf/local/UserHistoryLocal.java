@@ -15,9 +15,9 @@ public class UserHistoryLocal extends AppLocal<UserHistory> {
 	}
 	
 	
-	public List<UserHistory> queryUserHistory() {
+	public List<UserHistory> queryUserHistory(String type) {
 		return (List<UserHistory>) queryBySql(
-				"select t.* from UserHistory t order by t.lastTime desc",
+				"select t.* from UserHistory t where t.type='"+type+"' order by t.lastTime desc",
 				UserHistory.class); 
 	}
 
@@ -26,10 +26,11 @@ public class UserHistoryLocal extends AppLocal<UserHistory> {
 	 * @param model
 	 * @throws Exception
 	 */
-	public void createOrUpdateUserHistory(UserHistory model) {
+	public void createOrUpdateUserHistory(String type,UserHistory model) {
+		model.setType(type);
 		UserHistory userHistory = getRowBySql(
 				"select t.* from UserHistory t where t.userName='"
-						+ model.getUserName() + "'", UserHistory.class);
+						+ model.getUserName() + "' and t.type='"+type+"'", UserHistory.class);
 		if (userHistory == null) {
 			save(model);
 		} else {
@@ -41,11 +42,16 @@ public class UserHistoryLocal extends AppLocal<UserHistory> {
 	 * 删除员工历史数据
 	 * @throws Exception
 	 */
-	public void deleteUserHistory(){
-		List<UserHistory> userHistories = queryUserHistory();
+	public void deleteUserHistory(String type){
+		List<UserHistory> userHistories = queryUserHistory(type);
 		for(int i=0,j=userHistories.size();i<j;i++){
 			deleteById(userHistories.get(i).getId(),UserHistory.class);
 		}
 	}
 
+	
+	public void deleteAll(){
+		deleteUserHistory(UserHistory.TYPE_USER);
+		deleteUserHistory(UserHistory.TYPE_PROJECTMODULE);
+	}
 }

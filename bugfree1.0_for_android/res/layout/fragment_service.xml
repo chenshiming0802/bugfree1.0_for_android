@@ -77,6 +77,9 @@
                     android:id="@+id/editBt"
                     android:text="编辑事件" />
                 <Button style="@style/theme_bzone_item_buttonline_button"
+                    android:id="@+id/uploadBt"
+                    android:text="上传照片" />
+                <Button style="@style/theme_bzone_item_buttonline_button"
                     android:id="@+id/fixBt"
                     android:text="解决事件" />
             </LinearLayout>
@@ -129,7 +132,7 @@
         <!-- 解决它区 -->
         <LinearLayout style="@style/theme_bzone_item_layout"
             android:id="@+id/fixBlock"
-            android:visibility="visible" >
+            android:visibility="gone" >
             <LinearLayout style="@style/theme_bzone_item_headerline_layout">
                 <TextView style="@style/theme_bzone_item_headerline_title"
                     android:text="解决事件"

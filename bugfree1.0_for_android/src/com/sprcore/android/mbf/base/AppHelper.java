@@ -27,10 +27,11 @@ import com.sprcore.android.mbf.base.depend.apphelper.HttpDataHistoryLocal;
  *
  */
 public abstract class AppHelper {
-
-	private final static String URL = "http://testenv.bsp.bsteel.net/baosteel_cas2/service_proxy2.jsp";
-	private final static String DEBUG_URL = "http://192.168.1.101/BugFree/rest/";
-	private final static boolean DEBUG = false;
+	public final static String BASE_URL = "http://testenv.bsp.bsteel.net/baosteel_cas2/";
+	public final static String URL = "service_proxy2.jsp";
+	//public final static String DEBUG_URL = "http://192.168.1.104:82/BugFree/rest/";
+	public final static String DEBUG_BASE_URL = "http://192.168.1.107:8081/service_proxy/";
+	public final static boolean DEBUG = false;
 	
 	public boolean isSuccess(AppSrModel srModel){
 		if(srModel!=null && srModel.getResultFlag()!=null && srModel.getResultFlag().equals("1")){
@@ -54,9 +55,10 @@ public abstract class AppHelper {
 	 * @return
 	 */
 	protected Object httpPost(String service,AppSpModel spModel,Class cls,boolean isCache){		
-		String realUrl = URL;
+		String realUrl = BASE_URL+URL;
 		if(DEBUG){
-			realUrl = DEBUG_URL+service;
+			//realUrl = DEBUG_URL+service;
+			realUrl = DEBUG_BASE_URL+URL;
 		}	
 		
 		AppSrModel srModel = null;

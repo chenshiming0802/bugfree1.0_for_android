@@ -75,7 +75,7 @@ public class AppSpinnerModel {
 	public void setDatasWithEmptyLine(List<AppKeyValueModel> datas,AppKeyValueModel model) {
 		this.datas = new ArrayList<>();
 		if(model==null){
-			model = new AppKeyValueModel("","(空)");
+			model = new AppKeyValueModel("","");
 		}
 		this.datas.add(model);
 		this.datas.addAll(datas);

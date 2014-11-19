@@ -115,7 +115,7 @@ public class SearchUserActivity extends AppActivity {
 					startThread(userHistory, new AppRunnable<UserHistory>() {
 						@Override
 						public void run(UserHistory params){
-							new UserHistoryLocal().createOrUpdateUserHistory(params);
+							new UserHistoryLocal().createOrUpdateUserHistory(UserHistory.TYPE_USER,params);
 						}	
 					});
 					
@@ -165,7 +165,7 @@ public class SearchUserActivity extends AppActivity {
 				AppSrModel srModel = new AppSrModel();
 				
 				UserHistoryLocal local = new UserHistoryLocal() ;
-				local.deleteUserHistory();
+				local.deleteUserHistory(UserHistory.TYPE_USER);
 				srModel.setResultFlag("0");
 				return srModel;
 			}
@@ -184,7 +184,7 @@ public class SearchUserActivity extends AppActivity {
 			@Override
 			protected QueryUsersSrModel doInBackground() {
 				QueryUsersSrModel srModel = new QueryUsersSrModel();
-				List<UserHistory> list = new UserHistoryLocal().queryUserHistory();	
+				List<UserHistory> list = new UserHistoryLocal().queryUserHistory(UserHistory.TYPE_USER);	
 				List<UserModel> datas = new ArrayList<QueryUsersSrModel.UserModel>();
 				for(int i=0,j=list.size();i<j;i++){
 					UserHistory model = list.get(i);
@@ -209,6 +209,7 @@ public class SearchUserActivity extends AppActivity {
 			@Override
 			protected QueryUsersSrModel doInBackground() {
 				QueryUsersSpModel spModel = new QueryUsersSpModel();
+				spModel.setType(UserHistory.TYPE_USER);
 				spModel.setQueryString(searchEt.getText().toString());
 				spModel.setPageSize(listViewModel.getLongPageSize());
 				spModel.setPageIndex(listViewModel.getLongLoadNextPageIndex());
@@ -218,8 +219,10 @@ public class SearchUserActivity extends AppActivity {
 
 			@Override
 			protected void onPostExecute(QueryUsersSrModel srModel) {
-				listViewModel.setDatas(srModel.getDatas());
-				listViewModel.notifyDataSetChanged();
+				if(isSuccess(srModel)){					
+					listViewModel.setDatas(srModel.getDatas());
+					listViewModel.notifyDataSetChanged();
+				}
 			}
 
 		}
