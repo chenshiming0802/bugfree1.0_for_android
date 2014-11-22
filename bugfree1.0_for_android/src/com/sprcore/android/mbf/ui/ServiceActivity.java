@@ -507,37 +507,19 @@ public class ServiceActivity extends AppActivity {
 			}
 		};	
 		private String picFilePath;
-//		@Override
-//		public void onActivityResult(int requestCode, int resultCode,
-//				Intent data) {
-//			super.onActivityResult(requestCode, resultCode, data);
-//			if(resultCode != RESULT_OK) return;
-//			
-//			if(requestCode == ImageUtils.REQUEST_CODE_GETIMAGE_BYSDCARD) {
-//				//照片選擇
-//				String thePath = ImageUtils
-//						.getAbsolutePathFromNoStandardUri(data.getData());
-//				// 如果是标准Uri
-//				if (thePath == null || thePath.trim().length() == 0) {
-//					this.picFilePath = ImageUtils.getAbsoluteImagePath(
-//							getBaseActivity(), data.getData());
-//				} else {
-//					this.picFilePath = thePath;
-//				}
-//			}else{
-//				//拍攝照片
-//				this.picFilePath = Environment.getExternalStorageDirectory()
-//						+ "/temp.jpg";
-//			}
-//			new UploadPicTask().singleExecute(getCurrentFragment());
-//		}
+ 
 		
 		
 		public class UploadPicTask extends AppAsyncTask<AppSrModel>{
 
 			@Override
 			protected AppSrModel doInBackground() {
+				
+				
+				
 				String imgName = FileUtils.getFileName(picFilePath);
+				//将picFilePath重新设置temp.jpg，以防止将相册的图片覆盖
+				picFilePath = Environment.getExternalStorageDirectory()	+ "/temp.jpg";
 				//Bitmap bitmap = ImageUtils.loadImgThumbnail(getBaseActivity(), imgName, MediaStore.Images.Thumbnails.MICRO_KIND);
 				try {
 					Bitmap bitmap = ImageUtils.getimage(picFilePath, 1200f, 800f);
