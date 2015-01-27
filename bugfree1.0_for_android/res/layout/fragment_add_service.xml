@@ -17,7 +17,8 @@
                     android:text="事件标题：" />
                 <EditText style="@style/theme_bzone_item_line_value"
                     android:id="@+id/bugTitleEt"
-                    />
+
+                    android:singleLine="true" />
             </LinearLayout>
             <LinearLayout style="@style/theme_bzone_item_line_layout">
                 <TextView style="@style/theme_bzone_item_line_label"

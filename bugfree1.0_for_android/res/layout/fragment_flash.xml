@@ -38,6 +38,6 @@
             android:textSize="20dp"
             android:textColor="#cccccc"
             android:textStyle="bold"
-            android:text="Mobile App版本"/>
+            android:text="向奋战在一线的IT劳动者\n致  敬"/>
     </LinearLayout>
 </LinearLayout>
